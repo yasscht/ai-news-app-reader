@@ -5,18 +5,23 @@ function App() {
   const alanKey = process.env.REACT_APP_ALAN_KEY;
 
   useEffect(() => {
-    alanBtn({
-      key: alanKey,
-      onCommand: ({ commande }) => {
-        if (commande === "testCommand") {
-          alert("this code was executed");
-        }
-      },
-    });
+    function updateScreen(time) {
+      // Make visual updates here.
+      alanBtn({
+        key: alanKey,
+        onCommand: ({ command }) => {
+          if (command === "testCommand") {
+            alert("This code was executed");
+          }
+        },
+      });
+    }
+
+    requestAnimationFrame(updateScreen);
   }, []);
   return (
     <div className="App">
-      <h1>AI News Application</h1>
+      <h1>AI News Reader</h1>
     </div>
   );
 }
